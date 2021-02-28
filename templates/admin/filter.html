@@ -1,0 +1,10 @@
+{% load i18n %}
+
+<div class='form-inline'>
+    <label for='filter'>{% blocktranslate with filter_title=title %} By {{ filter_title }} {% endblocktranslate %}</label>
+    <select class='form-select' id='filter' onchange='window.location = $(this).val()'>
+        {% for choice in choices %}
+            <option{% if choice.selected %} class='selected'{% endif %} value='{{ choice.query_string|iriencode }}' title='{{ choice.display }}'>{{ choice.display }}</option>
+        {% endfor %}
+    </select>
+</div>

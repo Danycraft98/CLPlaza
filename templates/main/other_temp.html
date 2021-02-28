@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block main_content %}
+    <div class='app-main__inner'>
+        {% if user and user.is_authenticated and title %}
+            <div class='app-page-title'>
+                <div class='page-title-wrapper'>
+                    <div class='page-title-heading'>
+                        <div class='page-title-icon'>
+                            <i class='{{ title.0 }}'></i>
+                        </div>
+
+                        <div>
+                            <h1>{{ title.1 }}</h1>
+
+                            <div class='page-title-subheading'>{{ title.2 }}</div>
+                        </div>
+                    </div>
+                    <div class='page-title-actions'>
+                        <button type='button' data-toggle='tooltip' title='' data-placement='bottom' class='btn-shadow mr-3 btn btn-dark' data-original-title='Example Tooltip'>
+                            <i class='fa fa-star'></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class='tabs-animation'>main_content
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

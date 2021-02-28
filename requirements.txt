@@ -1,0 +1,45 @@
+# Main Packages ---------------------
+pip
+setuptools
+wheel
+psycopg2
+
+# Heroku Packages -------------------
+gunicorn
+django-heroku
+whitenoise
+scout-apm
+
+# Django Packages -------------------
+Django~=3.1.7
+dj-database-url
+django-cors-headers
+django-createuser
+django-extensions
+django-filter
+djangorestframework
+django-rest-auth
+django-allauth
+
+# Other Packages --------------------
+beautifulsoup4
+chatterbot
+cymem
+google-api-python-client
+httplib2
+lims
+lxml
+murmurhash
+numpy
+oauth2client
+openpyxl
+pandas
+Pillow
+pygments
+pyopenssl
+python-dotenv
+pyxlsb
+SQLAlchemy
+spacy==2.3.5
+xlrd
+xlwt
