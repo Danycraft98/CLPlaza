@@ -39,7 +39,7 @@ for key, value in config.items():
 SECRET_KEY = '@+@-xbsi0fm#chhna_2y%u5*jl=18f#4xgd^u2fpv38#fcob_e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', True)
+DEBUG = os.getenv('DEBUG', True)
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'ecommerce_old.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3')),
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL', 'sqlite:///db.sqlite3')),
 }
 
 # Password validation
@@ -118,9 +118,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
+LANGUAGE_CODE = os.getenv('LANGUAGE_CODE', 'en-us')
 
-TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
+TIME_ZONE = os.getenv('TIME_ZONE', 'UTC')
 
 USE_I18N = True
 
@@ -143,5 +143,5 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Stripe Informations
 
-STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_LIVE_PUBLIC_KEY')
-STRIPE_PRIVATE_KEY = STRIPE_SECRET_KEY = os.environ.get('STRIPE_LIVE_SECRET_KEY')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_LIVE_PUBLIC_KEY')
+STRIPE_PRIVATE_KEY = STRIPE_SECRET_KEY = os.getenv('STRIPE_LIVE_SECRET_KEY')

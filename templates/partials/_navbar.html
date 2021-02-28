@@ -7,9 +7,18 @@
         <button class='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavDarkDropdown' aria-controls='navbarNavDarkDropdown' aria-expanded='false' aria-label='Toggle navigation'>
             <span class='navbar-toggler-icon'></span>
         </button>
-        <div class='collapse navbar-collapse' id='navbarNavDarkDropdown'>
+        <div class='collapse navbar-collapse justify-content-between' id='navbarNavDarkDropdown'>
             <div class='navbar-nav'>
-                <a class='nav-item nav-link' href="{% url 'index' %}">Link</a>
+                <a class='nav-item nav-link' href="{% url 'terms' %}">이용 약관</a>
+                <a class='nav-item nav-link' href="{% url 'policy' %}">정책</a>
+            </div>
+            <div class='navbar-nav'>
+                {% if user and user.is_authenticated %}
+                    <a class='nav-item nav-link' href="{% url 'logout' %}">로그아웃</a>
+                {% else %}
+                    <a class='nav-item nav-link' href="{% url 'login' %}">로그인</a>
+                    <a class='nav-item nav-link' href="{% url 'signup' %}">가입</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -136,13 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    {% else %}
-
-                        <div class='widget-content-left ml-3'>
-                            <a class='nav-link' href="{% url 'login' %}">로그인</a>
-                            <a class='nav-link' href="{% url 'signup' %}">가입</a>
                         </div>
 
                     {% endif %}

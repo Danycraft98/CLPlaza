@@ -5,47 +5,54 @@ function set_required() {
 }
 
 
-function load_ajax(container, url, return_func) {
+function load_ajax(container, details, return_func) {
+    const url = details.url, method = details.request;
     $(function () {
         $.ajax({
-            url: url,
-            async: false,
+            url: url, method: method,
+            async: true, crossDomain: true,
+            //credentials: 'include',
+            headers: {
+                'cache-control': 'no-cache',
+                'postman-token': 'e044290e-4cb5-3056-fbc3-de2c26cecb79',
+            },
             beforeSend: function () {
                 $(container).html('Loading...');
             },
-            success: resp => return_func(resp, url),
-            error: resp => return_func(resp, url)
+            fail: resp => console.log(resp, method, url)
+        }).done(function (resp) {
+            return_func(resp, url, method);
         });
     });
 }
 
 
-function write_result(respText, url) {
-    let text = new XMLSerializer().serializeToString(respText.documentElement), tabs = '', start = 0;
-    text = text.replace(/(<([a-zA-Z]+\b)[^>]*>)(?!<\/\2>|[^<])/g, "$1\n") //add \n after tag if not followed by the closing tag of pair or text node
-        .replace(/(<\/[a-zA-Z]+[^>]*>)/g, "$1\n") //add \n after closing tag
-        .replace(/>\s+(.+?)\s+<(?!\/)/g, ">\n$1\n<") //add \n between sets of angled brackets and text node between them
-        .replace(/>(.+?)<([a-zA-Z])/g, ">\n$1\n<$2") //add \n between angled brackets and text node between them
-        .replace(/\?></, "?>\n<") //detect a header of XML
+function formatML(node, level) {
+    let indentBefore = new Array(level++ + 1).join('    '),
+        indentAfter = new Array(level - 1).join('    '),
+        textNode;
 
-    const xmlArr = text.split('\n'), result_div = $('#result'), indent = '\t';
-    if (/^<[?]xml/.test(xmlArr[0])) start++;
-    for (let i = start; i < xmlArr.length; i++) {
-        const line = xmlArr[i].replace(/^\s+|\s+$/g, '');
-        if (/^<[/]/.test(line)) {
-            tabs = tabs.replace(indent, '');
-            xmlArr[i] = tabs + line;
-        } else if (/<.*>.*<\/.*>|<.*[^>]\/>/.test(line)) xmlArr[i] = tabs + line;
-        else if (/<.*>/.test(line)) {
-            xmlArr[i] = tabs + line;
-            tabs += indent;
-        } else xmlArr[i] = tabs + line;
-    }
+    if (!node.children) return node;
+    Array.from(node.children).forEach(function (child) {
+        textNode = document.createTextNode('\n' + indentBefore);
+        node.insertBefore(textNode, child);
+        formatML(child, level);
 
-    if (text) {
-        $('#url').text(url.toString());
-        result_div.text('\n\n' + xmlArr.join('\n'));
-    } else result_div.text('None');
+        if (node.lastElementChild === child) {
+            textNode = document.createTextNode('\n' + indentAfter);
+            node.appendChild(textNode);
+        }
+    })
+    return node;
+}
+
+
+function write_result(respText, url, method) {
+    if (!respText) result_div.text('None');
+    const result_div = $('#result'), html = document.createElement('html');
+    html.innerHTML = respText.trim();
+    $('#url').text(method + ' ' + url);
+    result_div.text(formatML(html, 0).outerHTML);
 }
 
 

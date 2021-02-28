@@ -26,7 +26,7 @@ urlpatterns = [
     path('policy/', views.policy, name='policy'),
 
     path('accounts/', include('accounts.urls')),
-    path('products/', include('products.urls')),
+    path('api/', include('api.urls')),
     path('admin/', admin.site.urls),
 
     url(r'^$', ChatterBotAppView.as_view(), name='main'),

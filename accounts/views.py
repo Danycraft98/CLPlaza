@@ -7,11 +7,9 @@ from django.shortcuts import render, redirect
 
 def signup(request):
     if request.method == 'POST':
-        User.objects.create_user(request.POST.get('username', ''),
-                                 password=request.POST.get('password1', ''),
-                                 email=request.POST.get('email', ''))
+        User.objects.create_user(request.POST.get('username', ''), password=request.POST.get('password1', ''), email=request.POST.get('email', ''))
         return redirect('/')
-    return render(request, 'registration/signup.html')
+    return render(request, 'accounts/register.html')
 
 
 @login_required
@@ -27,4 +25,4 @@ def user_profile(request, username):
         print(form_dict)
         User.objects.filter(username=username).update(**form_dict)
         print(request.user)
-    return render(request, 'registration/profile.html', {'user': request.user, 'groups': groups})
+    return render(request, 'accounts/profile.html', {'user': request.user, 'groups': groups})
