@@ -1,5 +1,4 @@
 import os
-import subprocess
 
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -12,7 +11,7 @@ from .functions import get_access_token
 
 sep = os.path.sep
 
-TITLE1 = ('pe-7s-rocket', 'Postman App', '')
+TITLE1 = ('pe-7s-network', 'Postman App', '')
 
 
 class ProductViewSet(viewsets.ModelViewSet):
