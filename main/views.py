@@ -15,7 +15,7 @@ def search(request):
         products1 = Product.objects.filter(name__contains=item)
     except Category.DoesNotExist:
         return redirect(reverse('products', kwargs={'item': item}))
-    return render(request, 'main/products.html', {'products': products1, 'item': item, 'groups': groups})
+    return render(request, 'products/products.html', {'products': products1, 'item': item, 'groups': groups})
 
 
 def products(request, item):
@@ -29,7 +29,7 @@ def products(request, item):
             products1 = Product.objects.filter(tag__id=item.id)
         except Tag.DoesNotExist or Product.DoesNotExist:
             raise Http404('Category or Tag or Products does not exist')
-    return render(request, 'main/products.html', {'products': products1, 'item': item, 'groups': groups})
+    return render(request, 'products/products.html', {'products': products1, 'item': item, 'groups': groups})
 
 
 def product(request, name):
@@ -38,7 +38,7 @@ def product(request, name):
         product1 = Product.objects.get(name=name)
     except Product.DoesNotExist:
         raise Http404('Product does not exist')
-    return render(request, 'main/product.html', {'product': product1, 'groups': groups})
+    return render(request, 'products/product.html', {'product': product1, 'groups': groups})
 
 
 def add(request):
@@ -50,7 +50,7 @@ def add(request):
         prodToBuyers.save()
     except BaseException:
         prodToBuyers = ProductsToBuyers.objects.create(products=product1, buyers=request.user, quantity=quantity)
-    return render(request, 'main/add.html', {'prodToBuyers': prodToBuyers})
+    return render(request, 'products/add.html', {'prodToBuyers': prodToBuyers})
 
 
 def cart(request):
@@ -70,7 +70,7 @@ def cart(request):
     for prod in list_of_prod:
         total_quantity += prod.quantity
         total_cost += prod.products.price * prod.quantity
-    return render(request, 'main/cart.html', {'products': list_of_prod, 'total_info': (total_quantity, total_cost)})
+    return render(request, 'products/cart.html', {'products': list_of_prod, 'total_info': (total_quantity, total_cost)})
 
 
 def pay(request):
@@ -95,7 +95,7 @@ def pay(request):
         'session_id': session.id,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY
     }
-    return render(request, 'main/pay.html', {'total_cost': total_cost, 'user': request.user})
+    return render(request, 'products/pay.html', {'total_cost': total_cost, 'user': request.user})
 
 
 def delete(request, prod_id):
