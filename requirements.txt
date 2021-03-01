@@ -22,6 +22,7 @@ django-mathfilters
 djangorestframework
 django-rest-auth
 django-allauth
+stripe
 
 # Other Packages --------------------
 beautifulsoup4
