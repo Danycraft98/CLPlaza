@@ -1,1 +1,1 @@
-web: gunicorn ECPlazaTools.wsgi --log-file -
+web: gunicorn CLPlaza.wsgi --log-file -

@@ -1,9 +1,9 @@
 {
-    "name": "ECPlaza Tools",
-    "logo": "https://github.com/Danycraft98/ecplaza-tools/tree/master/static/images/logo.png",
+    "name": "CLPlaza",
+    "logo": "https://github.com/Danycraft98/CLPlaza/tree/master/static/images/logo.png",
     "description": "A barebones Python app, which can easily be deployed to Heroku.",
     "image": "heroku/python",
-    "repository": "https://github.com/Danycraft98/ecplaza-tools",
+    "repository": "https://github.com/Danycraft98/CLPlaza",
     "keywords": [
         "python",
         "django"
