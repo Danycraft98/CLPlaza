@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_createuser',
     'django_filters',
+    'mathfilters',
     'rest_framework',
     'rest_framework.authtoken'
 ]

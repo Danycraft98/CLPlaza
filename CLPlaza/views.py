@@ -58,8 +58,8 @@ class ChatterBotApiView(View):
 
 
 def index(request):
-    groups = Category.objects.all()
-    return render(request, 'main/index.html', {'groups': groups})
+    categories = Category.objects.all()
+    return render(request, 'main/index.html', {'categories': categories})
 
 
 TITLE = ('pe-7s-rocket', 'ECPlaza Tools', '모든 도구를 사용할수있어요.')

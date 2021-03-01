@@ -11,12 +11,14 @@ whitenoise
 scout-apm
 
 # Django Packages -------------------
-Django~=3.1.7
+Django
+SQLAlchemy
 dj-database-url
 django-cors-headers
 django-createuser
 django-extensions
 django-filter
+django-mathfilters
 djangorestframework
 django-rest-auth
 django-allauth
@@ -39,7 +41,6 @@ pygments
 pyopenssl
 python-dotenv
 pyxlsb
-SQLAlchemy
 spacy==2.3.5
 xlrd
 xlwt

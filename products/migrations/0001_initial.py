@@ -5,6 +5,21 @@ from django.db import migrations, models
 import django.db.models.deletion
 
 
+def add_categories(apps, _schema_editor):
+    """
+    apps: ? Used; to get apps
+    _schema_editor: ?; not used parameter
+    return:
+    Initialize Category models.
+    """
+    Category = apps.get_model('products', 'Category')
+    Category.objects.get_or_create(name='홈 인테리어')
+    Category.objects.get_or_create(name='식품')
+
+    Product = apps.get_model('products', 'Product')
+    Product.objects.get_or_create(name='우유', price=10, stock=10, category=Category.objects.get(name='식품'))
+
+
 class Migration(migrations.Migration):
 
     initial = True
@@ -19,6 +34,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=20)),
+                ('icon', models.CharField(max_length=20)),
             ],
         ),
         migrations.CreateModel(
@@ -57,4 +73,6 @@ class Migration(migrations.Migration):
                 ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='products.product')),
             ],
         ),
+
+        migrations.RunPython(add_categories),
     ]

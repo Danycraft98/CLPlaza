@@ -1,0 +1,62 @@
+{% load static %}
+
+
+{% for prod in item.products.all %}
+    {% if forloop.counter0|divisibleby:3 %}
+        <div class='row'>
+    {% endif %}
+
+<div class='m-3 col-3 card-hover-shadow profile-responsive card-border border-light mb-3 card px-0' data-vendor-item-id='{{ prod.id }}'>
+    <div class='d-block card-body'>
+        <div class='menu-header-content text-center'>
+            <a href="{% url 'product' prod.id %}">
+                <div class='avatar-icon-wrapper btn-hover-shine mb-2 avatar-icon-xl'>
+                    <img width='160' height='160' src='{% static prod.get_image_path %}' alt='{{ prod.name }}'>
+                </div>
+
+                <h5 class='menu-header-title'>{{ prod.name }}</h5>
+                {% if prod.tags.count %}
+                    <div class='menu-header-btn-pane pt-2'>
+                        <div role='group' class='btn-group text-center'>
+                            <div class='nav'>
+                                {% for tag in prod.tags.all %}
+                                    <a href='#tab-2-eg{{ forloop.counter }}' data-toggle='tab' class='active btn btn-dark'>{{ tag }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </a>
+        </div>
+
+        <div class='widget-content p-0'>
+            <div class='widget-content-wrapper'>
+                <div class='widget-content-left flex2'>
+                    <div class='widget-heading'>
+                        <span><b class='text-success'>${{ prod.price }}</b></span>
+                    </div>
+                </div>
+                <div class='widget-content-right'>
+                    <div class='icon-wrapper m-0'>
+                        <div class='progress-circle-wrapper'>
+                            <div class='circle-progress d-inline-block circle-progress-primary'>
+                                <canvas width='104' height='104' style='height: 52px; width: 52px;'></canvas>
+                                <small><span>64%<span></span></span></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <form class="cart_add" method="POST" action="{% url 'add' %}">
+            <input name='prod_id' value='{{ prod.id }}' aria-label='id' hidden>
+            <input class='form-control ml-2' id='quantity' name='quantity' type='number' value='1' aria-label='quantity' hidden>
+            <a class='offset-md-3 col-6 btn-shadow-primary btn btn-primary btn-lg' type='submit' href="{% url 'add' %}" onclick='this.form.submit()'>Add to cart</a>
+        </form>
+    </div>
+</div>
+{% if forloop.counter|divisibleby:3 or forloop.last %}
+    </div>
+{% endif %}
+{% endfor %}

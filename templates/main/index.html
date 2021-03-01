@@ -7,7 +7,7 @@
 {% endblock %}
 
 
-{% block main_content %}
+{% block slide %}
     <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1000">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-label="Slide 1" aria-current="true"></button>
@@ -37,133 +37,62 @@
             </div>
         </div>
     </div>
+{% endblock %}
 
-    <div class='app-main__inner'>
-        {% if user and user.is_authenticated and title %}
-            <div class='app-page-title'>
-                <div class='page-title-wrapper'>
-                    <div class='page-title-heading'>
-                        <div class='page-title-icon'>
-                            <i class='{{ title.0 }}'></i>
-                        </div>
 
-                        <div>
-                            <h1>{{ title.1 }}</h1>
+{% block main_content %}
+    <div class='mb-3 card'>
+        <div class='card-header d-flex align-items-center justify-content-between'>
+            <h5 class='my-2'>
+                <i class='header-icon lnr-charts icon-gradient bg-happy-green'> </i>
+                Best Choice
+            </h5>
 
-                            <div class='page-title-subheading'>{{ title.2 }}</div>
-                        </div>
-                    </div>
-                    <div class='page-title-actions'>
-                        <button type='button' data-toggle='tooltip' title='' data-placement='bottom' class='btn-shadow mr-3 btn btn-dark' data-original-title='Example Tooltip'>
-                            <i class='fa fa-star'></i>
-                        </button>
-                    </div>
+            <div class='align-items-right my-2'>
+                <div class='navbar-nav ml-auto'>
+                    <button class='nav-item btn btn-primary' type='button'>View All</button>
                 </div>
             </div>
-        {% endif %}
+        </div>
 
-        <div class='tabs-animation'>
-            <div class='mb-3 card'>
-                <div class='card-header d-flex align-items-center justify-content-between'>
-                    <h5 class='my-2'>
-                        <i class='header-icon lnr-charts icon-gradient bg-happy-green'> </i>
-                        Best Choice
-                    </h5>
+        <div class='card-body'>
+            Find Best Choice List
+        </div>
 
-                    <div class='align-items-right my-2'>
-                        <div class='navbar-nav ml-auto'>
-                            <button class='nav-item btn btn-primary' type='button'>View All</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class='card-body'>
-                    Find Best Choice List
-                </div>
-
-                <div class='text-center d-block p-3 card-footer'>
-                    <button class='btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg'>
+        <div class='text-center d-block p-3 card-footer'>
+            <button class='btn-pill btn-shadow btn-wide fsize-1 btn btn-primary btn-lg'>
                         <span class='mr-2 opacity-7'>
                             <i class='icon icon-anim-pulse ion-ios-analytics-outline'></i>
                         </span>
 
-                        <span class='mr-1'>View Complete Report</span>
-                    </button>
-                </div>
-            </div>
+                <span class='mr-1'>View Complete Report</span>
+            </button>
+        </div>
+    </div>
 
-            <div>
-                <div class='vertical-time-icons vertical-timeline vertical-timeline--animate vertical-timeline--one-column'>
-                    {% for group in groups %}
-                        <div class='vertical-timeline-item vertical-timeline-element mb-4'>
-                            <div class='vertical-timeline-element-icon bounce-in'>
-                                <div class='timeline-icon {% if forloop.counter0|divisibleby:4 %}border-danger{% elif forloop.counter|divisibleby:4 %}border-primary{% elif forloop.counter|add:1|divisibleby:4 %}border-success{% else %}border-warning{% endif %}'>
-                                    <i class='pe-7s-user-female'></i>
-                                </div>
-                            </div>
-
-                            <div class='vertical-timeline-element-content bounce-in row'>
-                                <div class='col-1'>
-                                    <h4 class='timeline-title'>{{ group }}</h4>
-                                    <a>바로가기 ></a>
-                                </div>
-                                <div class='col-11 card container-fluid'>
-                                    <div class='row'>
-                                        {% for prod in group.products.all %}
-                                            <div class='m-3 col-3 card-hover-shadow profile-responsive card-border border-light mb-3 card px-0' data-vendor-item-id='{{ prod.id }}'>
-                                                <div class='d-block card-body'>
-                                                    <div class='menu-header-content text-center'>
-                                                        <div class='avatar-icon-wrapper btn-hover-shine mb-2 avatar-icon-xl'>
-                                                            <div class='avatar-icon rounded'>
-                                                                <img width='160' src='{% static prod.get_image_path %}' alt='{{ prod.name }}'>
-                                                            </div>
-                                                        </div>
-
-                                                        <h5 class='menu-header-title'>{{ prod.name }}</h5>
-                                                        {% if prod.tags.count %}
-                                                            <div class='menu-header-btn-pane pt-2'>
-                                                                <div role='group' class='btn-group text-center'>
-                                                                    <div class='nav'>
-                                                                        {% for tag in prod.tags.all %}
-                                                                            <a href='#tab-2-eg{{ forloop.counter }}' data-toggle='tab' class='active btn btn-dark'>{{ tag }}</a>
-                                                                        {% endfor %}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        {% endif %}
-                                                    </div>
-
-                                                    <div class='widget-content p-0'>
-                                                        <div class='widget-content-wrapper'>
-                                                            <div class='widget-content-left flex2'>
-                                                                <div class='widget-heading'>
-                                                                    <span><b class='text-success'>${{ prod.price }}</b></span>
-                                                                </div>
-                                                            </div>
-                                                            <div class='widget-content-right'>
-                                                                <div class='icon-wrapper m-0'>
-                                                                    <div class='progress-circle-wrapper'>
-                                                                        <div class='circle-progress d-inline-block circle-progress-primary'>
-                                                                            <canvas width='104' height='104' style='height: 52px; width: 52px;'></canvas>
-                                                                            <small><span>64%<span></span></span></small>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <button class='offset-md-3 col-6 btn-shadow-primary btn btn-primary btn-lg'>Add to Cart</button>
-                                                </div>
-                                            </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
+    <div>
+        <div class='vertical-time-icons vertical-timeline vertical-timeline--animate vertical-timeline--one-column'>
+            {% for category in categories %}
+                <div class='vertical-timeline-item vertical-timeline-element mb-4'>
+                    <div class='vertical-timeline-element-icon bounce-in'>
+                        <div class='timeline-icon {% if forloop.counter0|divisibleby:4 %}border-danger{% elif forloop.counter|divisibleby:4 %}border-primary{% elif forloop.counter|add:1|divisibleby:4 %}border-success{% else %}border-warning{% endif %}'>
+                            <i class='pe-7s-user-female'></i>
                         </div>
-                    {% endfor %}
+                    </div>
+
+                    <div class='vertical-timeline-element-content bounce-in row'>
+                        <div class='col-1'>
+                            <h4 class='timeline-title'>{{ category }}</h4>
+                            <a href="{% url 'products' category.id %}">바로가기 &gt</a>
+                        </div>
+                        <div class='col-11 card container-fluid'>
+                            {% with item=category %}
+                                {% include 'partials/_products.html' %}
+                            {% endwith %}
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
@@ -175,5 +104,6 @@
         $(document).ready(function () {
             $('.dataTable').DataTable();
         });
+
     </script>
 {% endblock %}

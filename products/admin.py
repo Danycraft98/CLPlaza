@@ -27,7 +27,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {'fields': ['name']}),
-        ('details', {'fields': ['group', 'price', 'stock']})
+        ('details', {'fields': ['category', 'price', 'stock']})
     )
     inlines = [ImageInline]
 

@@ -13,6 +13,7 @@ STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
+    icon = models.CharField(max_length=20)
 
     def __str__(self):
         return self.name

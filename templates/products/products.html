@@ -2,133 +2,388 @@
 {% load custom_tags mathfilters static %}
 
 
-{% block main_content %}
-    <div class="breadcrumb-option" style="" switch-adjust-width-normal="11">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="breadcrumb__text">
-                        <h2>Shop ({{ tag }})</h2>
+{% block breadcrumb %}
+    <div class='breadcrumb__links'>
+        <a href='{% url 'index' %}'>Home</a><span> &gt {{ item }}</span>
+    </div>
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class='card col-2 newcx-search-filter search-filter'>
+        <!--TODO: Convert all filters to tag-->
+        <input type="hidden" name="filterKey" title="attributeFilter" value="" disabled="disabled">
+        <input type="hidden" name="filter" title="attributeFilter" value="">
+
+        <!-- search category -->
+        <div class="search-filter-options search-category-component">
+            <div class='card-header h5'>카테고리</div>
+
+            <div id="searchCategoryComponent" class="card-body search-filter-option-list">
+                <div class="search-option-items">
+                    <div class="search-option-item" data-linkcode="498704" data-isparent="Y" data-component-id="498604" data-campaign-id="" data-link-uri="/np/categories/498704">
+                        <input type="radio" id="component498604" name="component" title="componentFilter" value="498604">
+                        <label for="component498604"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;category&quot;, &quot;sectionVal&quot;:&quot;&quot;, &quot;depth&quot;:&quot;1&quot;}"
+                               data-log-name="{&quot;log&quot;:&quot;click_maincategorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">의류</label>
+                        <a href="#" class="btn-fold" data-category="category498604" data-category-depth="2depth" data-log-name="{&quot;log&quot;:&quot;click_arrowbutton_for_categorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">열림</a>
+                        <div id="category498604" class="search-option-items-child"></div>
+                    </div>
+
+                    <div class="search-option-item" data-linkcode="498775" data-isparent="Y" data-component-id="498675" data-campaign-id="" data-link-uri="/np/categories/498775">
+                        <input type="radio" id="component498675" name="component" title="componentFilter" value="498675">
+                        <label for="component498675"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;category&quot;, &quot;sectionVal&quot;:&quot;&quot;, &quot;depth&quot;:&quot;1&quot;}"
+                               data-log-name="{&quot;log&quot;:&quot;click_maincategorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">속옷/잠옷</label>
+                        <a href="#" class="btn-fold" data-category="category498675" data-category-depth="2depth" data-log-name="{&quot;log&quot;:&quot;click_arrowbutton_for_categorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">열림</a>
+                        <div id="category498675" class="search-option-items-child"></div>
+                    </div>
+
+                    <div class="search-option-item" data-linkcode="498797" data-isparent="Y" data-component-id="498697" data-campaign-id="" data-link-uri="/np/categories/498797">
+                        <input type="radio" id="component498697" name="component" title="componentFilter" value="498697">
+                        <label for="component498697"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;category&quot;, &quot;sectionVal&quot;:&quot;&quot;, &quot;depth&quot;:&quot;1&quot;}"
+                               data-log-name="{&quot;log&quot;:&quot;click_maincategorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">신발</label>
+                        <a href="#" class="btn-fold" data-category="category498697" data-category-depth="2depth" data-log-name="{&quot;log&quot;:&quot;click_arrowbutton_for_categorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">열림</a>
+                        <div id="category498697" class="search-option-items-child"></div>
+                    </div>
+
+                    <div class="search-option-item" data-linkcode="498828" data-isparent="Y" data-component-id="498728" data-campaign-id="" data-link-uri="/np/categories/498828">
+                        <input type="radio" id="component498728" name="component" title="componentFilter" value="498728">
+                        <label for="component498728"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;category&quot;, &quot;sectionVal&quot;:&quot;&quot;, &quot;depth&quot;:&quot;1&quot;}"
+                               data-log-name="{&quot;log&quot;:&quot;click_maincategorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">가방/잡화</label>
+                        <a href="#" class="btn-fold" data-category="category498728" data-category-depth="2depth" data-log-name="{&quot;log&quot;:&quot;click_arrowbutton_for_categorymenu&quot;,&quot;group&quot;:&quot;category&quot;,&quot;event&quot;:&quot;click&quot;}">열림</a>
+                        <div id="category498728" class="search-option-items-child"></div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="breadcrumb__links">
-                        <a href="{% url 'index' %}">Home</a>
-                        <span>{{ item }}</span>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchCategoryComponent"><span>+ 더보기</span></a>
+            </div>
+        </div>
+        <!-- // search category -->
+
+        <!-- brand filter -->
+        <div class="search-filter-options search-brand-filter">
+            <div class='card-header card-header h5'>브랜드</div>
+
+            <div id="searchBrandFilter" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="br1" title="brandFilter" data-name="brand">
+                        <label for="br1" class='form-check-label item-name brand' title="베이스알파에센셜">베이스알파에센셜</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="br2" title="brandFilter" data-name="brand">
+                        <label for="br2" class='form-check-label item-name brand' title="나이키">나이키</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="br3" title="brandFilter" data-name="brand">
+                        <label for="br3" class='form-check-label item-name brand' title="푸마">푸마</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="br4" title="brandFilter" data-name="brand">
+                        <label for="br4" class='form-check-label item-name brand' title="아디다스">아디다스</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchBrandFilter" style="display: inline;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+        <!-- // brand filter -->
+
+        <!-- attribute filter -->
+        <!-- size -->
+        <div class="search-filter-options search-attr_11190-filter">
+            <div class='card-header h5'>사이즈</div>
+
+            <div id="searchAttrFilterattr_11190-6" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size1" title="sizeFilter" data-name="size">
+                        <label for="size1" class='form-check-label item-name brand' title="XS">XS</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size2" title="sizeFilter" data-name="size">
+                        <label for="size2" class='form-check-label item-name brand' title="S">S</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size3" title="sizeFilter" data-name="size">
+                        <label for="size3" class='form-check-label item-name brand' title="M">M</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size4" title="sizeFilter" data-name="size">
+                        <label for="size4" class='form-check-label item-name brand' title="L">L</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size5" title="sizeFilter" data-name="size">
+                        <label for="size5" class='form-check-label item-name brand' title="XL">XL</label>
+                    </div>
+                    <!--2XL 3XL+ removed-->
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="size6" title="sizeFilter" data-name="size">
+                        <label for="size6" class='form-check-label item-name brand' title="FREE (One Size)">FREE (One Size)</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchAttrFilterattr_11190-6" style="display: inline;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+
+        <!-- color / pattern -->
+        <div class="search-filter-options search-attr_10496-filter">
+            <div class='card-header h5'>색상</div>
+
+            <div id="searchAttrFilterattr_10496-0" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="color1" title="colorFilter" data-name="color">
+                        <label for="color1" class='form-check-label item-name brand' title="블랙">블랙</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="color2" title="colorFilter" data-name="color">
+                        <label for="color2" class='form-check-label item-name brand' title="네이비">네이비</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="color3" title="colorFilter" data-name="color">
+                        <label for="color3" class='form-check-label item-name brand' title="그레이">그레이</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchAttrFilterattr_10496-0" style="display: inline;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+
+        <div class="search-filter-options search-attr_10778-filter">
+            <div class='card-header h5'>패턴/프린트</div>
+
+            <div id="searchAttrFilterattr_10778-9" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="pattern1" title="patternFilter" data-name="pattern">
+                        <label for="pattern1" class='form-check-label item-name brand' title="단색(무지)">단색(무지)</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="pattern2" title="patternFilter" data-name="pattern">
+                        <label for="pattern2" class='form-check-label item-name brand' title="스트라이프(줄무늬)">스트라이프(줄무늬)</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="pattern3" title="patternFilter" data-name="pattern">
+                        <label for="pattern3" class='form-check-label item-name brand' title="도트(땡땡이)">도트(땡땡이)</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="pattern4" title="patternFilter" data-name="pattern">
+                        <label for="pattern4" class='form-check-label item-name brand' title="체크/격자무늬">체크/격자무늬</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchAttrFilterattr_10778-9" style="display: inline;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+
+        <!-- material -->
+        <div class="search-filter-options search-attr_4766-filter">
+            <div class='card-header h5'>소재</div>
+
+            <div id="searchAttrFilterattr_4766-3" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="material1" title="materialFilter" data-name="material">
+                        <label for="material1" class='form-check-label item-name brand' title="면 100%">면 100%</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="material1" title="materialFilter" data-name="material">
+                        <label for="material1" class='form-check-label item-name brand' title="니트">니트</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="material1" title="materialFilter" data-name="material">
+                        <label for="material1" class='form-check-label item-name brand' title="레이온">레이온</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchAttrFilterattr_4766-3" style="display: inline;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+
+        <!-- season -->
+        <div class="search-filter-options search-attr_3676-filter">
+            <div class='card-header h5'>사용 계절</div>
+
+            <div id="searchAttrFilterattr_3676-5" class="card-body search-filter-toggle search-filter-option-list">
+                <div class="search-option-items search-customized-checkbox">
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="season1" title="seasonFilter" data-name="season">
+                        <label for="season1" class='form-check-label item-name brand' title="사계절용">사계절용</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="season2" title="seasonFilter" data-name="season">
+                        <label for="season2" class='form-check-label item-name brand' title="봄/가을용">봄/가을용</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="season3" title="seasonFilter" data-name="season">
+                        <label for="season3" class='form-check-label item-name brand' title="여름용">여름용</label>
+                    </div>
+
+                    <div class="search-option-item folded">
+                        <input type='checkbox' class='form-check-input' id="season4" title="seasonFilter" data-name="season">
+                        <label for="season4" class='form-check-label item-name brand' title="겨울용">겨울용</label>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-item-fold" data-toggle="searchAttrFilterattr_3676-5" style="display: none;"><span>+ 더보기</span></a>
+            </div>
+        </div>
+        <!-- // attribute filter -->
+
+        <!-- rating filter -->
+        <div class="search-filter-options search-rating-filter">
+            <div class='card-header h5'>별점</div>
+
+            <div id="searchRatingFilter" class="card-body search-filter-option-list">
+                <div class="search-option-items">
+
+                    <div class="search-option-item selected">
+                        <input type="radio" id="rating0" name="rating" value="0" checked="checked">
+                        <label for="rating0" class="item-name rating"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;rating&quot;, &quot;sectionVal&quot;:&quot;all&quot;}"
+                               title="전체" data-log-name="{&quot;log&quot;:&quot;click_ratingsfilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">
+                            <span class="rating00"></span>별점 전체</label>
+                    </div>
+
+                    <div class="search-option-item checkbox-inline">
+                        <input type="radio" id="rating4" name="rating" value="4">
+                        <label for="rating4" class="item-name rating"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;rating&quot;, &quot;sectionVal&quot;:&quot;4&quot;}"
+                               title="4점 이상" data-log-name="{&quot;log&quot;:&quot;click_ratingsfilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">
+                            <span class="rating04"></span>4점 이상</label>
+                    </div>
+
+                    <div class="search-option-item checkbox-inline">
+                        <input type="radio" id="rating3" name="rating" value="3">
+                        <label for="rating3" class="item-name rating"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;rating&quot;, &quot;sectionVal&quot;:&quot;3&quot;}"
+                               title="3점 이상" data-log-name="{&quot;log&quot;:&quot;click_ratingsfilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">
+                            <span class="rating03"></span>3점 이상</label>
+                    </div>
+
+                    <div class="search-option-item checkbox-inline">
+                        <input type="radio" id="rating2" name="rating" value="2">
+                        <label for="rating2" class="item-name rating"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;rating&quot;, &quot;sectionVal&quot;:&quot;2&quot;}"
+                               title="2점 이상" data-log-name="{&quot;log&quot;:&quot;click_ratingsfilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">
+                            <span class="rating02"></span>2점 이상</label>
+                    </div>
+
+                    <div class="search-option-item checkbox-inline">
+                        <input type="radio" id="rating1" name="rating" value="1">
+                        <label for="rating1" class="item-name rating"
+                               data-coulog="{&quot;logCategory&quot;:&quot;event&quot;, &quot;logType&quot;:&quot;click&quot;, &quot;logLabel&quot;:&quot;PLP&quot;, &quot;group&quot;:&quot;FILTER&quot;, &quot;section&quot;:&quot;rating&quot;, &quot;sectionVal&quot;:&quot;1&quot;}"
+                               title="1점 이상" data-log-name="{&quot;log&quot;:&quot;click_ratingsfilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">
+                            <span class="rating01"></span>1점 이상</label>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- // rating filter -->
+
+        <!-- price filter -->
+        <div class="search-filter-options search-price-filter">
+            <div class='card-header h5'>가격</div>
+
+            <div id="searchPriceFilter" class="card-body search-filter-option-list">
+                <div class="search-option-items">
+
+
+                    <div class="search-option-item selected">
+
+                        <a href="#" id="price0" class="price-range" data-min-price="" data-max-price="">가격 전체</a>
+                    </div>
+
+
+                    <div class="search-option-item checkbox-inline">
+
+                        <a href="#" id="price1" class="price-range" data-min-price="0" data-max-price="7000">7천원 이하</a>
+                    </div>
+
+
+                    <div class="search-option-item checkbox-inline">
+
+                        <a href="#" id="price2" class="price-range" data-min-price="7000" data-max-price="14000">7천원~1만 4천원</a>
+                    </div>
+
+
+                    <div class="search-option-item checkbox-inline">
+
+                        <a href="#" id="price3" class="price-range" data-min-price="14000" data-max-price="21000">1만 4천원~2만 1천원</a>
+                    </div>
+
+
+                    <div class="search-option-item checkbox-inline">
+
+                        <a href="#" id="price4" class="price-range" data-min-price="21000" data-max-price="28000">2만 1천원~2만 8천원</a>
+                    </div>
+
+
+                    <div class="search-option-item checkbox-inline">
+
+                        <a href="#" id="price5" class="price-range" data-min-price="28000" data-max-price="2147483647">2만 8천원 이상</a>
+                    </div>
+
+                </div>
+
+                <div class="pricetab-pricerange">
+                    <span><input type="text" title="minPrice" class="param-pricerange" maxlength="10" value=""> ~</span>
+                    <span><input type="text" title="maxPrice" class="param-pricerange" maxlength="10" value=""> 원</span>
+
+                    <a href="#" class="btn-price-submit" data-log-name="{&quot;log&quot;:&quot;click_pricefilter&quot;,&quot;group&quot;:&quot;filter&quot;,&quot;event&quot;:&quot;click&quot;}">검색</a>
+                </div>
+            </div>
+        </div>
+        <!-- // price filter -->
+    </div>
+{% endblock %}
+
+
+{% block main_content %}
+    <div class='container-fluid'>
+        {% include 'partials/_products.html' %}
+
+        <div class='shop__last__option'>
+            <div class='row'>
+                <div class='col-lg-6 col-md-6 col-sm-6'>
+                    <div class='shop__pagination'>
+                        <a href='#'>1</a>
+                        <a href='#'>2</a>
+                        <a href='#'>3</a>
+                        <a href='#'><span class='fa fa-chevron-right'></span></a>
+                    </div>
+                </div>
+                <div class='col-lg-6 col-md-6 col-sm-6'>
+                    <div class='shop__last__text'>
+                        <p>Showing 1-{{ item.products.count }} of {{ item.products.count }} results</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--div class='row'>
-        <div class='col'>
-            {% if item|is_string %}
-                <a class='text-dark disabled'>Search Result</a>
-            {% else %}
-                <a class='text-dark' href='{% url 'index' %}'>Home</a> / <a class='text-dark' href='{% url 'products' item %}'>
-                {% if item.name %}{{ item.name }}{% else %}{{ item.content }}{% endif %}
-            </a>
-            {% endif %}
-        </div>
-    </div-->
-
-    <section class="shop spad" style="" switch-adjust-width-normal="12">
-        <div class="container">
-            <div class="shop__option">
-                <div class="row">
-                    <div class="col-lg-7 col-md-7">
-                        <div class="shop__option__search">
-                            <form action="#">
-                                <select style="display: none;">
-                                    <option value="">Categories</option>
-                                    <option value="">Red Velvet</option>
-                                    <option value="">Cup Cake</option>
-                                    <option value="">Biscuit</option>
-                                </select>
-                                <div class="nice-select" tabindex="0"><span class="current">Categories</span>
-                                    <div class="list">
-                                        <div data-value="" class="option selected">Categories</div>
-                                        <div data-value="" class="option">Red Velvet</div>
-                                        <div data-value="" class="option">Cup Cake</div>
-                                        <div data-value="" class="option">Biscuit</div>
-                                    </div>
-                                </div>
-                                <input type="text" placeholder="Search">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="col-lg-5 col-md-5">
-                        <div class="shop__option__right">
-                            <select class="nice-select list" style="display: none;">
-                                <option value="">Default sorting</option>
-                                <option value="">A to Z</option>
-                                <option value="">1 - 8</option>
-                                <option value="">Name</option>
-                            </select>
-                            <!--div class="nice-select" tabindex="0"><span class="current">Default sorting</span>
-                                <ul class="list">
-                                    <li data-value="" class="option selected focus">Default sorting</li>
-                                    <li data-value="" class="option">A to Z</li>
-                                    <li data-value="" class="option">1 - 8</li>
-                                    <li data-value="" class="option">Name</li>
-                                </ul>
-                            </div-->
-                            <a href="#"><i class="fa fa-list"></i></a>
-                            <a href="#"><i class="fa fa-reorder"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            {% for prod in products %}
-                {% if forloop.counter0|divisibleby:5 %}
-                    <div class='row'>
-                {% endif %}
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="product__item">
-                    <div class="product__item__pic set-bg" data-setbg="{% static prod.get_image_path %}" style="background-image: url({% static prod.get_image_path %});">
-                        <div class="product__label">
-                            <span>{{ item }}</span>
-                        </div>
-                    </div>
-                    <div class="product__item__text">
-                        <h6><a href="{% url 'product' prod.name %}">{{ prod }}</a></h6>
-                        <div class="product__item__price">${{ prod.price|floatformat:2 }}</div>
-                        <form class="cart_add" method="POST" action="{% url 'add' %}">
-                            <input name='prod_id' value='{{ prod.id }}' aria-label='id' hidden>
-                            <input class='form-control ml-2' id='quantity' name='quantity' type='number' value='1' aria-label='quantity' hidden>
-                            <a type='submit' href="{% url 'add' %}" onclick='this.form.submit()'>Add to cart</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            {% if forloop.counter|divisibleby:4 or forloop.counter == 3 %}
-                </div>
-            {% endif %}
-            {% endfor %}
-
-            <div class="shop__last__option">
-                <div class="row">
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="shop__pagination">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#"><span class="fa fa-chevron-right"></span></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <div class="shop__last__text">
-                            <p>Showing 1-{{ item.products.count }} of {{ item.products.count }} results</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 {% endblock %}
 
 {% block script %}

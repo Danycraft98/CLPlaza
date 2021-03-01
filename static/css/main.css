@@ -12228,11 +12228,11 @@ a, button, .btn {
 }
 
 .app-theme-white.app-container {
-    background: #f1f4f6;
+    background: #fff;
 }
 
 .app-theme-white .app-sidebar {
-    background: #fff;
+    background: #f1f4f6;
 }
 
 .app-theme-white .app-page-title {

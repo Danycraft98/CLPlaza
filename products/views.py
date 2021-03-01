@@ -5,40 +5,39 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.conf import settings
 
-from products.models import *
+from .models import *
 
 
 def search(request):
-    groups = Category.objects.all()
+    categories = Category.objects.all()
     item = request.POST.get('search', '')
     try:
-        products1 = Product.objects.filter(name__contains=item)
+        prod_list = Product.objects.filter(name__contains=item)
     except Category.DoesNotExist:
         return redirect(reverse('products', kwargs={'item': item}))
-    return render(request, 'products/products.html', {'products': products1, 'item': item, 'groups': groups})
+    return render(request, 'products/products.html', {'products': prod_list, 'item': item, 'categories': categories})
 
 
-def products(request, item):
-    groups = Category.objects.all()
+def products(request, cat_id):
+    categories = Category.objects.all()
     try:
-        item = Category.objects.get(name=item)
-        products1 = Product.objects.filter(group__id=item.id)
+        item = Category.objects.get(id=cat_id)
     except Category.DoesNotExist or Product.DoesNotExist:
         try:
-            item = Tag.objects.get(content=item)
-            products1 = Product.objects.filter(tag__id=item.id)
+            item = Tag.objects.get(content=cat_id)
+            prod_list = Product.objects.filter(tag__id=item.id)
         except Tag.DoesNotExist or Product.DoesNotExist:
             raise Http404('Category or Tag or Products does not exist')
-    return render(request, 'products/products.html', {'products': products1, 'item': item, 'groups': groups})
+    return render(request, 'products/products.html', {'title': ('pe-7s-file', item.name, ''), 'item': item, 'categories': categories})
 
 
-def product(request, name):
-    groups = Category.objects.all()
+def product(request, prod_id):
+    categories = Category.objects.all()
     try:
-        product1 = Product.objects.get(name=name)
+        prod = Product.objects.get(id=prod_id)
     except Product.DoesNotExist:
         raise Http404('Product does not exist')
-    return render(request, 'products/product.html', {'product': product1, 'groups': groups})
+    return render(request, 'products/product.html', {'product': prod, 'categories': categories})
 
 
 def add(request):

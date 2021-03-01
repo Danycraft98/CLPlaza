@@ -6,11 +6,46 @@
     {% include 'partials/_navbar.html' %}
 
     <div class='app-main'>
+        {% block sidebar %}{% endblock %}
         <div class='app-main__outer'>
-            {% block main_content %}{% endblock %}
+            {% block slide %}{% endblock %}
+
+            <div class='app-main__inner'>
+                {% if title %}
+                    <div class='app-page-title mb-0'>
+                        <div class='page-title-wrapper'>
+                            <div class='page-title-heading'>
+                                <div class='page-title-icon'>
+                                    <i class='{{ title.0 }}'></i>
+                                </div>
+
+                                <div>
+                                    <h1>{{ title.1 }}</h1>
+
+                                    <div class='page-title-subheading'>
+                                        {% if title.2 %}
+                                            {{ title.2 }}
+                                        {% else %}
+                                            {% block breadcrumb %}{% endblock %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class='page-title-actions'>
+                                <button type='button' data-toggle='tooltip' title='' data-placement='bottom' class='btn-shadow mr-3 btn btn-dark' data-original-title='Example Tooltip'>
+                                    <i class='fa fa-star'></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class='tabs-animation'>
+                    {% block main_content %}{% endblock %}
+                </div>
+            </div>
 
             {% include 'partials/_footer.html' %}
-
             <div class='chat-box position-fixed bottom-0 end-0'>
                 <a class='chat-head card-header d-flex justify-content-between' data-bs-toggle='collapse' href='#chat-content' onclick='chat_click()' role='button' aria-expanded='false'
                    aria-controls='collapseExample'>

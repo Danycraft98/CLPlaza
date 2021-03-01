@@ -2,7 +2,7 @@
 {% load mathfilters static %}
 
 
-{% block main_content %}
+{% block breadcrumb %}
     <div class="breadcrumb-option">
         <div class="container">
             <div class="row">
@@ -14,111 +14,263 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="breadcrumb__links">
                         <a href="{% url 'index' %}">Home</a>
-                        <a href="{% url 'products' product.group %}">Shop</a>
+                        <a href="{#% url 'products' product.group.id %#}">Shop</a>
                         <span>{{ product }}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+{% endblock %}
 
 
-    <section class="product-details spad" style="" switch-adjust-width-normal="12">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="product__details__img">
-                        <div class="product__details__big__img">
-                            <img class='big_img' src='{% static product.get_image_path %}' id='{{ product.name }}' alt='{{ product }}'>
+{% block main_content %}
+    <div class="container">
+        <div class="row">
+            <div id="leftCol" class="col-4">
+                <div id="altImages" class="a-fixed-left-grid-col a-col-left" style="width:40px;margin-left:-40px;float:left;">
+                    <div class="a-unordered-list a-nostyle a-button-list a-vertical a-spacing-top-micro">
+                        <img alt="" src="https://images-na.ssl-images-amazon.com/images/G/15/HomeCustomProduct/360_icon_73x73v2._CB485971326_SS40_FMpng_RI_.png">
+                        <img alt="" src="https://images-na.ssl-images-amazon.com/images/I/41y%2BxBYUkOL._AC_US40_.jpg">
+                        <img alt="" src="https://images-na.ssl-images-amazon.com/images/I/41y%2BxBYUkOL._AC_US40_.jpg">
+                    </div>
+                </div>
+
+                <div class="image item itemNo0 maintain-height selected" style="cursor: pointer; height: 323px;">
+                    <img alt="Image" src="https://images-na.ssl-images-amazon.com/images/I/717epoRsS4L._AC_SX679_.jpg" style="max-width: 323px; max-height: 323px;">
+                </div>
+            </div>
+
+            <div id="centerCol" class="col-8">
+                <div id="title_feature_div" class="celwidget d-flex justify-content-between">
+                    <div>
+                        <div id="titleSection" class="a-section a-spacing-none">
+                            <h4 id="title" class="a-size-large a-spacing-none">{{ product.name }}</h4>
                         </div>
-                        <div class="product__details__thumb" style="overflow: hidden; outline: none;" tabindex="1">
-                            <div class="pt__item active">
-                                <img data-imgbigurl="{% static product.get_image_path %}" src="{% static product.get_image_path %}" alt="">
+
+                        <div class="a-section a-spacing-none"><a id="bylineInfo" class="a-link-normal" href="/stores/L%27Or%C3%A9al+Paris/page/166EE639-11A5-4149-9535-89B781D443A4?ref_=ast_bln">Visit the L'Oreal Paris Store</a></div>
+
+                        <div id="averageCustomerReviews" data-asin="B002JDUMFO" data-ref="dpx_acr_pop_">
+                            <span class="a-declarative" data-action="acrStarsLink-click-metrics" data-acrstarslink-click-metrics="{}">
+                                <span id="acrPopover" class="reviewCountTextLinkedHistogram noUnderline" title="4.4 out of 5 stars">
+                                    <span class="a-declarative" data-action="a-popover"
+                                          data-a-popover="{&quot;max-width&quot;:&quot;700&quot;,&quot;closeButton&quot;:&quot;false&quot;,&quot;position&quot;:&quot;triggerBottom&quot;,&quot;url&quot;:&quot;/gp/customer-reviews/widgets/average-customer-review/popover/ref=dpx_acr_pop_?contextId=dpx&amp;asin=B002JDUMFO&quot;}">
+                                        <a href="javascript:void(0)" class="a-popover-trigger a-declarative"><i class="a-icon a-icon-star a-star-4-5"><span class="a-icon-alt">4.4 out of 5 stars</span></i><i class="a-icon a-icon-popover"></i></a>
+                                    </span>
+                                    <span class="a-letter-space"></span>
+                                </span>
+                            </span>
+
+                            <span class="a-letter-space"></span>
+                            <span class="a-declarative" data-action="acrLink-click-metrics" data-acrlink-click-metrics="{}">
+                                <a id="acrCustomerReviewLink" class="a-link-normal" href="#customerReviews">
+                                    <span id="acrCustomerReviewText" class="a-size-base">17,721 ratings</span>
+                                </a>
+                                <span class="askPipe"> | </span>
+                                <a id="askATFLink" class="a-link-normal askATFLink" href="#Ask">
+                                    <span class="a-size-base">21 answered questions</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class='h4 text-white'>Hidden</div>
+                        <div class="prod-price">
+                            <div class="prod-price-onetime">
+                                <div class="prod-origin-price ">
+                            <span class="discount-rate">
+                                12%
+                            </span>
+                                    <span class="origin-price"><del>4,990원</del></span>
+
+                                    <div class="origin-price-info-icon"></div>
+                                </div>
+
+                                <div class="prod-sale-price   prod-major-price">
+                            <span class="total-price">
+                                <strong>4,390<span class="price-unit">원</span></strong>
+                            </span>
+
+                                    <span class="unit-price">(10g당 146원)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="product__details__text">
-                        <div class="product__label">{{ product.group }}</div>
-                        <h4>{{ product | upper }}</h4>
-                        <h5>${{ product.price|floatformat:2 }}</h5>
-                        <p>Product detail</p>
-                        <div>
-                            <div>{% if product.stock > 0 %}In Stock - SKU: <span>{{ product.stock }}</span>{% else %}Out of Stock{% endif %}</div>
-                            <div class='mt-0 pt-0'>Tags: <span>{{ tag }}</span></div>
-                        </div>
-                        <div class="product__details__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <span class="dec qtybtn">-</span>
-                                    <input class='form-control ml-2' id='quantity' name='quantity' type='number' min='1' value='1'>
-                                    <span class="inc qtybtn">+</span>
-                                </div>
+                <hr/>
+
+                <div id="iconfarmv2_feature_div" class="row" data-feature-name="iconfarmv2" data-csa-c-id="uf9c5x-vasl6s-i8sgp0-etwrug" data-cel-widget="iconfarmv2_feature_div">
+                    <div data-icon-content="icon-farm-secondary-view-holder" data-name="SECURE_TRANSACTION" data-type="redirect" id="RETURNS_POLICY" class="col-1" data-csa-c-id="7j03vf-yhjdf-o5cj34-hwmeqz" data-cel-widget="SECURE_TRANSACTION">
+                        <a class="popover-dismiss" tabindex="0" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Your transaction is secure."
+                           data-bs-content="We work hard to protect your security and privacy. Our payment security system encrypts your information during transmission. We don’t share your credit card details with third-party sellers, and we don’t sell your information to others.">
+                            <div class="a-section a-spacing-none">
+                                <img src="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-secure-transaction._CB404390779_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Secure transaction"
+                                     data-a-image-source="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-secure-transaction._CB404390779_.png">
+                                Secure transaction
                             </div>
+                        </a>
+                    </div>
+
+                    <div data-icon-content="icon-farm-secondary-view-holder" data-name="RETURNS_POLICY" data-type="redirect" id="RETURNS_POLICY" class="col-1" data-csa-c-id="7j03vf-yhjdf-o5cj34-hwmeqz" data-cel-widget="RETURNS_POLICY">
+                        <a class="popover-dismiss" tabindex="0" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Your transaction is secure."
+                           data-bs-content="We work hard to protect your security and privacy. Our payment security system encrypts your information during transmission. We don’t share your credit card details with third-party sellers, and we don’t sell your information to others.">
+                            <div class="a-section a-spacing-none">
+                                <img src="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-returns._CB406594999_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Returns Policy"
+                                     data-a-image-source="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-returns._CB406594999_.png">
+                                Returns Policy
+                            </div>
+                        </a>
+                    </div>
+
+                    <div data-icon-content="icon-container-def99359-1a63-44fd-8193-fec037667688" data-name="AMAZON_MANAGED_DELIVERY" data-type="custom-pop-over" id="AMAZON_MANAGED_DELIVERY" class="col-1" data-csa-c-id="ctkh5e-w7y95m-splyt8-dldwai" data-cel-widget="AMAZON_MANAGED_DELIVERY">
+                        <a class="popover-dismiss" tabindex="0" role="button" data-bs-toggle="popover" data-bs-trigger="hover focus" title="Amazon Delivered." data-bs-content="Amazon manages delivery by using preferred couriers/agents.">
+                            <div class="a-section a-spacing-none">
+                                <img src="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-amazon-delivered._CB406594996_.png" class="a-image-wrapper a-manually-loaded icon-box" id="" style="height:35px;width:35px;" alt="Amazon Delivered"
+                                     data-a-image-source="https://images-na.ssl-images-amazon.com/images/G/15/A2I-Convert/mobile/IconFarm/icon-amazon-delivered._CB406594996_.png">
+                                Amazon Delivered
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <p>Product detail</p>
+                <div>
+                    <div>{% if product.stock > 0 %}In Stock - SKU: <span>{{ product.stock }}</span>{% else %}Out of Stock{% endif %}</div>
+                    <div class='mt-0 pt-0'>Tags: <span>{{ tag }}</span></div>
+                </div>
+                <div class="product__details__option">
+                    <div class="quantity">
+                        <label for='quantity'>Quantity</label>
+                        <div class="pro-qty input-group">
+                            <input class='form-control ml-2' id='quantity' name='quantity' type='number' min='1' value='1'>
                             {% if user.is_authenticated %}
                                 <a href="#" class="btn btn-primary">Add to cart</a>
-                                <a href="#" class="heart__btn"><i class="fa fa-heart-o"></i></a>
+                                <!--a href="#" class="heart__btn"><i class="fa fa-heart-o"></i></a-->
                             {% else %}
                                 <a href="#" class="btn btn-primary disabled" disabled>Login to Add</a>
-                                <a href="#" class="heart__btn" disabled><i class="fa fa-heart-o"></i></a>
+                                <!--a href="#" class="heart__btn" disabled><i class="fa fa-heart-o"></i></a-->
                             {% endif %}
                         </div>
                     </div>
                 </div>
+
+                <div id="addOnItem_feature_div" class="celwidget" data-feature-name="addOnItem" data-csa-c-id="2q7kvo-d948fy-yxe8qf-3w2g8o" data-cel-widget="addOnItem_feature_div"></div>
+                <div id="andonCord_feature_div" class="celwidget" data-feature-name="andonCord" data-csa-c-id="yjt9s0-fms1x9-erbrvp-xquwa1" data-cel-widget="andonCord_feature_div"></div>
+
+                <div id="translationNotice_feature_div" class="celwidget" data-feature-name="translationNotice" data-csa-c-id="scggbd-gmatus-uli8bc-68m3js" data-cel-widget="translationNotice_feature_div"></div>
+                <div id="edpIngress_feature_div" class="celwidget" data-feature-name="edpIngress" data-csa-c-id="720h1c-tjno8q-oxh8if-vx45fk" data-cel-widget="edpIngress_feature_div"></div>
             </div>
-            <div class="product__details__tab">
-                <div class="col-lg-12">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Description</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Additional information</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content mb-4">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
-                                        tasty chunks of delicious strawberries. Made with the freshest ingredients, one
-                                        bite will send you to summertime. Each gift arrives in an elegant gift box and
-                                        arrives with a greeting card of your choice that you can personalize online!</p>
-                                </div>
+        </div>
+
+        <div class="product__details__tab">
+            <div class="col-lg-12">
+                <div class="nav nav-tabs" role="tablist">
+                    <a class="nav-item nav-link active" data-bs-toggle="tab" href="#tabs-1" role="tab">Overview</a>
+                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#tabs-2" role="tab">Description</a>
+                    <a class="nav-item nav-link" data-bs-toggle="tab" href="#tabs-3" role="tab">Previews(1)</a>
+                </div>
+                <div class="tab-content mb-4">
+                    <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                        <div class="row col d-flex justify-content-center">
+                            <table class="a-normal a-spacing-micro">
+                                <tbody>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Ingredients</span>
+                                    </td>
+                                    <td class="a-span9">
+                                        <span class="a-size-base">AQUA, CYCLOHEXASILOXANE, GLYCERIN, BUTYROSPERMUM PARKII BUTTER, ISOHEXADECANE, PENTAERYTHRITYL TETRAETHYLHEXANOATE, DIPROPYLENE GLYCOL, CERA ALBA, STE…</span>
+                                    </td>
+                                </tr>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Item form</span>
+                                    </td>
+                                    <td class="a-span9"><span class="a-size-base">Cream</span></td>
+                                </tr>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Brand</span>
+                                    </td>
+                                    <td class="a-span9"><span class="a-size-base">L'Oreal Paris</span></td>
+                                </tr>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Item weight</span>
+                                    </td>
+                                    <td class="a-span9"><span class="a-size-base">0.05 Kilograms</span></td>
+                                </tr>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Item volume</span>
+                                    </td>
+                                    <td class="a-span9"><span class="a-size-base">50 Milliliters</span></td>
+                                </tr>
+                                <tr class="a-spacing-small">
+                                    <td class="a-span3">
+                                        <span class="strong">Item dimensions L x W x H</span>
+                                    </td>
+                                    <td class="a-span9">
+                                        <span class="a-size-base">7.1 x 7.1 x 7.9 centimeters</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <ul class="prod-description-attribute">
+                                <li class="prod-attr-item" style="display: list-item;">제조년도: 20년</li>
+                                <li class="prod-attr-item" style="display: list-item;">사용계절: 사계절용</li>
+                                <li class="prod-attr-item" style="display: list-item;">스타일: 로맨틱</li>
+                                <li class="prod-attr-item" style="display: list-item;">의류 핏: 기본핏</li>
+                                <li class="prod-attr-item" style="display: list-item;">소재: 면혼방</li>
+                                <li class="prod-attr-item" style="display: list-item;">쿠팡상품번호: 1676637775 - 2856444704</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabs-2" role="tabpanel">
+                        <div class="row col d-flex justify-content-center">
+                            <div id="feature-bullets" class="a-section a-spacing-medium a-spacing-top-small">
+                                <ul class="a-unordered-list a-vertical a-spacing-mini">
+                                    <li>Collagen moisture filler provides a daily dose of intense hydration that helps visibly fill in the look of wrinkles and lines, restores moisture for skin that looks smoother, more cushioned</li>
+                                    <li>Visible results: Smoother, younger looking skin. Overnight, plumps the look of skin with intense moisture. Skin feels smoother, more nourished. In 4 weeks, wrinkles appear more filled in</li>
+                                    <li>Formulated with collagen, collagen is a naturally occurring protein in the skin. Our collagen is extracted and purified by a process that preserves all of its qualities</li>
+                                    <li>Extensively tested for safety with a minimum of 400 applications, under the guidance of dermatologists. Product tested by unbiased, independent third parties</li>
+                                    <li>Directions: Use every day and/or night on the face. Melting texture absorbs quickly without leaving a greasy or sticky film</li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
-                                        tasty chunks of delicious strawberries. Made with the freshest ingredients, one
-                                        bite will send you to summertime. Each gift arrives in an elegant gift box and
-                                        arrives with a greeting card of your choice that you can personalize online!2
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-lg-8">
-                                    <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
-                                        tasty chunks of delicious strawberries. Made with the freshest ingredients, one
-                                        bite will send you to summertime. Each gift arrives in an elegant gift box and
-                                        arrives with a greeting card of your choice that you can personalize online!3
-                                    </p>
-                                </div>
+                    </div>
+
+                    <div class="tab-pane" id="tabs-3" role="tabpanel">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-lg-8">
+                                <p>This delectable Strawberry Pie is an extraordinary treat filled with sweet and
+                                    tasty chunks of delicious strawberries. Made with the freshest ingredients, one
+                                    bite will send you to summertime. Each gift arrives in an elegant gift box and
+                                    arrives with a greeting card of your choice that you can personalize online!3
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <hr/>
+
+    <div cel_widget_id="seo-related-keywords-pages_csm_instrumentation_wrapper" class="celwidget" data-csa-c-id="s7pjlo-jv72rm-btctn5-yawram" data-cel-widget="seo-related-keywords-pages_csm_instrumentation_wrapper">
+        <div class="a-section">
+            <span class="a-text-bold">Pages with related products.</span>
+            <span>See and discover other items:
+                <a class="a-link-normal" href="/pcr/Best-Rated-Facial-Day-Creams-Reviews/11441792011?_encoding=UTF8&amp;ref_=fs_blw_d_pcr_1">Best Rated in Facial Day Creams</a>,
+                <a class="a-link-normal" href="/pcr/Best-Rated-Face-Moisturizers-Reviews/6344771011?_encoding=UTF8&amp;ref_=fs_blw_d_pcr_2">Best Rated in Face Moisturizers</a>,
+                <a class="a-link-normal" href="/slp/nivea-cream/8oxydr69v7zs8b8?_encoding=UTF8&amp;ref_=fs_blw_d_clp_3">nivea cream</a>
+            </span>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -129,44 +281,30 @@
             </div>
         </div>
         <div class="row">
-            <div class="related__products__slider owl-carousel owl-loaded owl-drag">
-                <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transform: translate3d(-1170px, 0px, 0px); transition: all 1.2s ease 0s; width: 4095px;">
-                        {% for a in '123'|make_list %}
-                            {% for prod in product.group.products.all %}
-                                <div class="owl-item {% if a == '1' %}active{% endif %}" style="width: 293px;">
-                                    <div class="col-lg-3">
-                                        <div class="product__item">
-                                            <div class="product__item__pic set-bg" data-setbg="{% static prod.get_image_path %}" style="background-image: url({% static prod.get_image_path %});">
-                                                <div class="product__label">
-                                                    <span>{{ product.group }}</span>
-                                                </div>
-                                            </div>
-                                            <div class="product__item__text">
-                                                <h6><a href="{% url 'product' prod.name %}">{{ prod.name }}</a></h6>
-                                                <div class="product__item__price">${{ prod.price|floatformat:2 }}</div>
-                                                <form class="cart_add" method="POST" action="{% url 'add' %}">
-                                                    <input name='prod_id' value='{{ prod.id }}' aria-label='id' hidden>
-                                                    <input class='form-control ml-2' id='quantity' name='quantity' type='number' value='1' aria-label='quantity' hidden>
-                                                    <a type='submit' href="{% url 'add' %}" onclick='this.form.submit()'>Add to cart</a>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        {% endfor %}
+            <div id="carousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        {% include 'partials/_products.html' %}
+                    </div>
+                    <div class="carousel-item">
+                        {% include 'partials/_products.html' %}
                     </div>
                 </div>
-                <div class="owl-nav">
-                    <button type="button" role="presentation" class="owl-prev"><span class="arrow_carrot-left"><span></span></span></button>
-                    <button type="button" role="presentation" class="owl-next"><span class="arrow_carrot-right"><span></span></span></button>
-                </div>
-                <div class="owl-dots disabled"></div>
             </div>
         </div>
     </div>
 {% endblock %}
 
+
 {% block script %}
+    <script>
+        var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+            trigger: 'focus'
+        });
+
+    </script>
 {% endblock %}

@@ -22,6 +22,7 @@ from CLPlaza.views import ChatterBotAppView, ChatterBotApiView
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('', include('products.urls')),
     path('terms/', views.terms, name='terms'),
     path('policy/', views.policy, name='policy'),
 
